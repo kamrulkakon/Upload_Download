@@ -21,7 +21,8 @@ public class FileController {
     private FileService fileService;
 
     @PostMapping("/upload")
-    public void uploadFile(@RequestParam("file") MultipartFile file) {
+    public void uploadFile(@RequestParam("file") MultipartFile file)
+    {
         fileService.saveFile(file);
     }
 
