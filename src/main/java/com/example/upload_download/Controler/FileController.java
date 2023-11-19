@@ -17,12 +17,15 @@ import java.util.List;
 @RequestMapping("/api/files")
 public class FileController {
 
+    private final FileService fileService;
+
     @Autowired
-    private FileService fileService;
+    public FileController(FileService fileService) {
+        this.fileService = fileService;
+    }
 
     @PostMapping("/upload")
-    public void uploadFile(@RequestParam("file") MultipartFile file)
-    {
+    public void uploadFile(@RequestParam("file") MultipartFile file) {
         fileService.saveFile(file);
     }
 
@@ -35,7 +38,8 @@ public class FileController {
     }
 
     @GetMapping("/list")
-    public List<Employee> getAllFiles() {
+    public List<Employee> getAllFiles()
+    {
         return fileService.getAllFiles();
     }
 }
